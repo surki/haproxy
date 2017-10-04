@@ -863,6 +863,7 @@ char *find_hdr_value_end(char *s, const char *e)
 		else if (quoted) {
 			if (*s == '\\')        qdpair = 1;
 			else if (*s == '"')    quoted = 0;
+			else if (*s == ',')    return s; // Handle incorrectly quoted fields
 		}
 		else if (*s == '"')            quoted = 1;
 		else if (*s == ',')            return s;
